@@ -2,14 +2,23 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 2rem;
 }
+.n_logo {
+    font-size: 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+    font-weight: bold;
+}
+
+.logo_wrap{
+    transform: rotate(-40deg)}
 
 .n_itemRow {
     margin: 0;
     padding: 0;
     list-style: none;
     display: flex;
-    margin-right: 10rem;
     text-transform: uppercase;
 }
 

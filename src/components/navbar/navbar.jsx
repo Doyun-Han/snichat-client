@@ -1,9 +1,14 @@
 import React from 'react';
 import './navbar.css'
+import {faShoePrints}from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Navbar = (props) => (
     <div className="n_wrap">
-        <div className="logo">
-            <p>This is logo</p>
+        <div className="n_logo">
+            <div className="logo_wrap">
+            <FontAwesomeIcon icon={faShoePrints}/>
+            </div>
+            <span>SniChat</span>
         </div>
         <div className="n_items">
             <ul className="n_itemRow">
