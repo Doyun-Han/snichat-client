@@ -144,6 +144,7 @@ img {
 .chatList {
     display: flex;
     align-items: center;
+    border-bottom: 1px solid darkgray;
 }
 
 .li_description {
@@ -185,11 +186,4 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.chatList:last-child(1)::after {
-    content: '';
-    width: 90%;
-    height: 1px;
-    border: 1px solid black;
 }

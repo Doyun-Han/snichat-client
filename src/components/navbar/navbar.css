@@ -1,3 +1,11 @@
+a {
+    text-decoration: none;
+    color: none;
+}
+a:active, a:visited {
+    color: black;
+}
+
 .n_wrap {
     display: flex;
     align-items: center;
@@ -30,3 +38,4 @@
 .n_item:hover {
     cursor: pointer;
 }
+

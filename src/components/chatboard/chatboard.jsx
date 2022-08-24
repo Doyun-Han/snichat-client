@@ -8,7 +8,7 @@ const Chatboard = (props) => (
     <>
     <div className="b_wrap">
         <div className="b_left">
-            <div className="chatList">
+            <div className="b_list">
                     <ul className="chatRows">
                         <li className="chatList">
                             <div className="li_img">
