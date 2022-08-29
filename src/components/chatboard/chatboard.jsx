@@ -3,7 +3,7 @@ import './chatboard.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faPaperPlane} from '@fortawesome/free-solid-svg-icons';
 import {faFaceSmile} from '@fortawesome/free-solid-svg-icons';
-import img from './jordan.JPG'
+import img from '../../imgs/jordan.JPG'
 const Chatboard = (props) => (
     <>
     <div className="b_wrap">

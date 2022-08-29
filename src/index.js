@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './app';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import Mychat from './path/mychat';
-import Term from './path/Term';
-import FAQ from './path/FAQ';
+import Mychat from './path/mychat/mychat';
+import FAQ from './path/FAQ/FAQ';
+import Term from './path/Term/Term';
+
 
 <script src="https://kit.fontawesome.com/3b0cac614e.js" crossorigin="anonymous"></script>
 ReactDOM.render(

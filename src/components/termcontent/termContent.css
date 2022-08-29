@@ -1,0 +1,8 @@
+.translations-content-container {
+    box-sizing: border-box;
+    overflow-y: scroll;
+    height: 80vh;
+    background-color: white;
+    padding: 0 1.5rem;
+    box-shadow: 4px 4px 8px 0px rgba(87,87,87,0.73);
+}
