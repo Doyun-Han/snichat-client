@@ -1,0 +1,46 @@
+.chatList {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid darkgray;
+}
+
+.li_description {
+    flex : 1;
+    margin-left: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 8px;
+}
+
+.li_left p:nth-of-type(1) {
+    font-weight: bold;
+}
+
+.li_left p:nth-of-type(2) {
+    font-size: 0.75rem;
+    color: gray;
+}
+
+.li_right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.li_right p:nth-of-type(1) {
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.msgCount {
+    background-color: orange;
+    width: 20px;
+    height: 20px;
+    font-size: 0.75rem;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

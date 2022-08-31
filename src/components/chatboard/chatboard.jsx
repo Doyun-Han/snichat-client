@@ -3,64 +3,25 @@ import './chatboard.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faPaperPlane} from '@fortawesome/free-solid-svg-icons';
 import {faFaceSmile} from '@fortawesome/free-solid-svg-icons';
-import img from '../../imgs/jordan.JPG'
-const Chatboard = (props) => (
-    <>
+import List from '../chatlist/list';
+const Chatboard = (props) => {
+    const openEmoji = () => {
+        const OS = window.navigator.platform;
+        if(OS === 'Win32') {
+            document.dispatchEvent(new KeyboardEvent('keypress', {keyCode : 91}))
+        }
+    }
+
+
+    return(
+        <>
     <div className="b_wrap">
         <div className="b_left">
             <div className="b_list">
                     <ul className="chatRows">
-                        <li className="chatList">
-                            <div className="li_img">
-                                <img src={img} alt="" />
-                            </div>
-                            <div className="li_description">
-                                <div className="li_left">
-                                    <p>Jordan1</p>
-                                    <p>I like it!</p>
-                                </div>
-                                <div className="li_right">
-                                    <p>09:00</p>
-                                    <div className="msgCount">
-                                    <p>3</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li className="chatList">
-                            <div className="li_img">
-                                <img src={img} alt="" />
-                            </div>
-                            <div className="li_description">
-                                <div className="li_left">
-                                    <p>Jordan1</p>
-                                    <p>I like it!</p>
-                                </div>
-                                <div className="li_right">
-                                    <p>09:00</p>
-                                    <div className="msgCount">
-                                    <p>3</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li className="chatList">
-                            <div className="li_img">
-                                <img src={img} alt="" />
-                            </div>
-                            <div className="li_description">
-                                <div className="li_left">
-                                    <p>Jordan1</p>
-                                    <p>I like it!</p>
-                                </div>
-                                <div className="li_right">
-                                    <p>09:00</p>
-                                    <div className="msgCount">
-                                    <p>3</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                        <List/>
+                        <List/>
+                        <List/>
                     </ul>
             </div>
         </div>
@@ -88,7 +49,7 @@ const Chatboard = (props) => (
             <div className="b_footer">
                 <div className="b_input">
                     <div className="emoji">
-                        <button>
+                        <button onClick={openEmoji}>
                             <FontAwesomeIcon icon={faFaceSmile} />
                         </button>
                     </div>
@@ -105,7 +66,7 @@ const Chatboard = (props) => (
         </div>
     </div>
     </>
-        
-    );
+    )
+    };
 
 export default Chatboard;
