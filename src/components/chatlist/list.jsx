@@ -1,11 +1,11 @@
 import React from 'react';
 import './list.css'
 import img from '../../imgs/jordan.JPG'
-const List = ({list}) => {
+const List = ({list, active, onClick, index}) => {
     const lastIdx = list.listMsg.length - 1;
     
     return(
-        <li className="chatList">
+        <li onClick={()=> onClick(index)} className={active ? "chatList active" : "chatList"}>
     <div className="li_img">
         <img src={img} alt="" />
     </div>

@@ -13,15 +13,22 @@ const Chatboard = ({chatData}) => {
             document.dispatchEvent(new KeyboardEvent('keypress', {keyCode : 91}))
         }
     }
+    const [active, setActive] = useState(0,[]);
+
+    const changeActive = (index) => {
+        const newArray = Array(chatData.lists.length).fill(false);
+        newArray[index] = true;
+        setActive(newArray);
+    }
 
     return(
         <>
     <div className="b_wrap">
         <div className="b_left">
             <div className="b_list">
-                    <ul className="chatRows">
-                        {chatData.lists.map((li) => {
-                            return <List list={li} key={li.listName}/>
+                    <ul className="chatRows" >
+                        {chatData.lists.map((li, index) => {
+                            return <List list={li} key={li.listName} active={active[index]} onClick={changeActive} index={index}/>
                         })}
                     </ul>
             </div>
