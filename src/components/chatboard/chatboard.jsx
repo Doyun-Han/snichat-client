@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './chatboard.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faPaperPlane} from '@fortawesome/free-solid-svg-icons';
 import {faFaceSmile} from '@fortawesome/free-solid-svg-icons';
 import List from '../chatlist/list';
-const Chatboard = (props) => {
+import Message from '../message/message';
+
+const Chatboard = ({chatData}) => {
     const openEmoji = () => {
         const OS = window.navigator.platform;
         if(OS === 'Win32') {
@@ -12,16 +14,15 @@ const Chatboard = (props) => {
         }
     }
 
-
     return(
         <>
     <div className="b_wrap">
         <div className="b_left">
             <div className="b_list">
                     <ul className="chatRows">
-                        <List/>
-                        <List/>
-                        <List/>
+                        {chatData.lists.map((li) => {
+                            return <List list={li} key={li.listName}/>
+                        })}
                     </ul>
             </div>
         </div>
@@ -44,6 +45,7 @@ const Chatboard = (props) => {
                     <li className="message other">Hi there, How are you?</li>
                     <li className="message other">Nice to meet you I`m David</li>
                     <li className="message me">Hi nice to meet you too, i`m Jake!</li>
+                    <Message message={{username : "me", text : "hello"}}/>
                 </ul>
             </div>
             <div className="b_footer">
