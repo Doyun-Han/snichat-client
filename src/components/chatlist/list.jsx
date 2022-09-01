@@ -1,15 +1,18 @@
 import React from 'react';
 import './list.css'
 import img from '../../imgs/jordan.JPG'
-const List = (props) => (
-    <li className="chatList">
+const List = ({list}) => {
+    const lastIdx = list.listMsg.length - 1;
+    
+    return(
+        <li className="chatList">
     <div className="li_img">
         <img src={img} alt="" />
     </div>
     <div className="li_description">
         <div className="li_left">
-            <p>Jordan1</p>
-            <p>I like it!</p>
+            <p>{list.listName}</p>
+            <p>{list.listMsg[lastIdx].text}</p>
         </div>
         <div className="li_right">
             <p>09:00</p>
@@ -19,6 +22,7 @@ const List = (props) => (
         </div>
     </div>
 </li>
-    );
+    )
+    };
 
 export default List;
