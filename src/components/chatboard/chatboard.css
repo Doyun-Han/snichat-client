@@ -130,7 +130,7 @@ img {
     height: 80vh;
     background-color: white;
     border-radius: 16px;
-    padding: 2rem;
+    padding: 2rem 1.5rem;
     overflow-y: auto;
 }
 

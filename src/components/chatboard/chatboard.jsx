@@ -13,12 +13,15 @@ const Chatboard = ({chatData}) => {
             document.dispatchEvent(new KeyboardEvent('keypress', {keyCode : 91}))
         }
     }
-    const [active, setActive] = useState(0,[]);
+    const [active, setActive] = useState([]);
+    const [messages, setMessage] = useState([{sender : "yo", text : "hello"}])
 
     const changeActive = (index) => {
         const newArray = Array(chatData.lists.length).fill(false);
         newArray[index] = true;
+        setMessage(chatData.lists[index].listMsg);
         setActive(newArray);
+        console.log(chatData.lists[index].listMsg)
     }
 
     return(
@@ -37,7 +40,7 @@ const Chatboard = ({chatData}) => {
         <div className="b_right">
             <div className="b_board">
                 <ul className='messages'>
-                    <li className="message other">Hi there, How are you?</li>
+                    {/* <li className="message other">Hi there, How are you?</li>
                     <li className="message other">Nice to meet you I`m David</li>
                     <li className="message me">Hi nice to meet you too, i`m Jake!</li>
                     <li className="message other">Hi there, How are you?</li>
@@ -51,8 +54,10 @@ const Chatboard = ({chatData}) => {
                     <li className="message me">Hi nice to meet you too, i`m Jake!</li>
                     <li className="message other">Hi there, How are you?</li>
                     <li className="message other">Nice to meet you I`m David</li>
-                    <li className="message me">Hi nice to meet you too, i`m Jake!</li>
-                    <Message message={{username : "me", text : "hello"}}/>
+                    <li className="message me">Hi nice to meet you too, i`m Jake!</li> */}
+                    {messages.map((msg) => {
+                        return <Message sender={msg.sender} text={msg.text} key={msg.id}/>
+                    })}
                 </ul>
             </div>
             <div className="b_footer">
