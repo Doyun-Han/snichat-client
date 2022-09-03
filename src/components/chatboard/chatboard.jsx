@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './chatboard.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faPaperPlane} from '@fortawesome/free-solid-svg-icons';
@@ -16,6 +16,18 @@ const Chatboard = ({chatData}) => {
     const [active, setActive] = useState([]);
     const [messages, setMessage] = useState([{sender : "yo", text : "Select ChatList"}])
     const msgInputRef = useRef();
+    const msgList = useRef();
+
+    useEffect(() => {
+        if (msgList.current) {
+            msgList.current.scrollIntoView(
+              {
+                behavior: 'smooth',
+                block: 'end',
+                inline: 'nearest'
+              })
+          }
+        })
 
     const changeActive = (index) => {
         const newArray = Array(chatData.lists.length).fill(false);
@@ -25,6 +37,8 @@ const Chatboard = ({chatData}) => {
     }
 
     const sendMessage = () => {
+        if(msgInputRef.current.value === null || msgInputRef.current.value === "") return
+
         const idx = messages.length
         const msg = [...messages];
         const sendMsg = { id : idx, sender : "han", sendTime : timeformat(new Date()), text : msgInputRef.current.value }
@@ -46,7 +60,6 @@ const Chatboard = ({chatData}) => {
 
         return `${year}-${month}-${date} ${hour}:${minutes}:${sec}`
     }
-
     return(
         <>
     <div className="b_wrap">
@@ -62,22 +75,7 @@ const Chatboard = ({chatData}) => {
 
         <div className="b_right">
             <div className="b_board">
-                <ul className='messages'>
-                    {/* <li className="message other">Hi there, How are you?</li>
-                    <li className="message other">Nice to meet you I`m David</li>
-                    <li className="message me">Hi nice to meet you too, i`m Jake!</li>
-                    <li className="message other">Hi there, How are you?</li>
-                    <li className="message other">Nice to meet you I`m David</li>
-                    <li className="message me">Hi nice to meet you too, i`m Jake!</li>
-                    <li className="message other">Hi there, How are you?</li>
-                    <li className="message other">Nice to meet you I`m David</li>
-                    <li className="message me">Hi nice to meet you too, i`m Jake!</li>
-                    <li className="message other">Hi there, How are you?</li>
-                    <li className="message other">Nice to meet you I`m David</li>
-                    <li className="message me">Hi nice to meet you too, i`m Jake!</li>
-                    <li className="message other">Hi there, How are you?</li>
-                    <li className="message other">Nice to meet you I`m David</li>
-                    <li className="message me">Hi nice to meet you too, i`m Jake!</li> */}
+                <ul className='messages' ref={msgList}>
                     {messages.map((msg) => {
                         return <Message sender={msg.sender} text={msg.text} key={msg.id}/>
                     })}
