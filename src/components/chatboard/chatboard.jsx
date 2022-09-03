@@ -50,6 +50,12 @@ const Chatboard = ({chatData}) => {
         msgInputRef.current.focus();
     }
 
+    const onKeyPress = (e) => {
+        if(e.key == 'Enter') {
+            sendMessage()
+        }
+    }
+
     const timeformat = (time) => {
         const year = time.getFullYear();
         const month = time.getMonth();
@@ -88,7 +94,7 @@ const Chatboard = ({chatData}) => {
                             <FontAwesomeIcon icon={faFaceSmile} />
                         </button>
                     </div>
-                    <input ref={msgInputRef} type="text" placeholder='Type a message' />
+                    <input onKeyPress={onKeyPress} ref={msgInputRef} type="text" placeholder='Type a message' />
                 </div>
                 <div className="b_sendBtn">
                     <div className="btn_inner">
