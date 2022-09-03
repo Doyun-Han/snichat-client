@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './chatboard.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faPaperPlane} from '@fortawesome/free-solid-svg-icons';
@@ -14,14 +14,37 @@ const Chatboard = ({chatData}) => {
         }
     }
     const [active, setActive] = useState([]);
-    const [messages, setMessage] = useState([{sender : "yo", text : "hello"}])
+    const [messages, setMessage] = useState([{sender : "yo", text : "Select ChatList"}])
+    const msgInputRef = useRef();
 
     const changeActive = (index) => {
         const newArray = Array(chatData.lists.length).fill(false);
         newArray[index] = true;
         setMessage(chatData.lists[index].listMsg);
         setActive(newArray);
-        console.log(chatData.lists[index].listMsg)
+    }
+
+    const sendMessage = () => {
+        const idx = messages.length
+        const msg = [...messages];
+        const sendMsg = { id : idx, sender : "han", sendTime : timeformat(new Date()), text : msgInputRef.current.value }
+        msg.push(sendMsg);
+
+        setMessage(msg);
+
+        msgInputRef.current.value = ''
+        msgInputRef.current.focus();
+    }
+
+    const timeformat = (time) => {
+        const year = time.getFullYear();
+        const month = time.getMonth();
+        const date = time.getDate();
+        const hour = time.getHours();
+        const minutes = time.getMinutes();
+        const sec = time.getSeconds(); 
+
+        return `${year}-${month}-${date} ${hour}:${minutes}:${sec}`
     }
 
     return(
@@ -67,11 +90,11 @@ const Chatboard = ({chatData}) => {
                             <FontAwesomeIcon icon={faFaceSmile} />
                         </button>
                     </div>
-                    <input type="text" placeholder='Type a message' />
+                    <input ref={msgInputRef} type="text" placeholder='Type a message' />
                 </div>
                 <div className="b_sendBtn">
                     <div className="btn_inner">
-                        <button>
+                        <button onClick={sendMessage}>
                         <FontAwesomeIcon icon={faPaperPlane} />
                         </button>
                     </div>
