@@ -1,0 +1,22 @@
+.message > .m_container :nth-child(2) {
+    margin-top: 0.25rem;
+    background-color: rgb(240, 240, 240);
+    padding: 2rem 1.5rem;
+    width: max-content;
+    border-radius: 0 16px 16px 16px;
+}
+
+.me {
+    margin-left: auto;
+}
+
+.me > .m_container :nth-child(1) {
+    display: none;
+}
+
+.me > .m_container :nth-child(2) {
+    position: relative;
+    background-color: rgb(85, 26, 137);
+    color: white;
+    border-radius: 16px 0 16px 16px;
+}

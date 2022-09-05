@@ -9,19 +9,22 @@
                     "id" : "0",
                     "sender" : "han",
                     "sendTime" : "2022-08-31 10:00:00",
-                    "text" : "Hi my name is Han"
+                    "text" : "Hi my name is Han",
+                    "listName" : "Jordan1"
                 },
                 {
                     "id" : "1",
                     "sender" : "David",
                     "sendTime" : "2022-08-31 10:00:00",
-                    "text" : "Hi my name is David"
+                    "text" : "Hi my name is David",
+                    "listName" : "Jordan1"
                 },
                 {
                     "id" : "2",
                     "sender" : "han",
                     "sendTime" : "2022-08-31 10:00:00",
-                    "text" : "Hi my name is Nice to meet you!"
+                    "text" : "Hi my name is Nice to meet you!",
+                    "listName" : "Jordan1"
                 }
             ]
         },
@@ -34,19 +37,22 @@
                     "id" : "0",
                     "sender" : "han",
                     "sendTime" : "2022-08-31 10:00:00",
-                    "text" : "Hi my name is Han"
+                    "text" : "Hi my name is Han",
+                    "listName" : "Jordan2"
                 },
                 {
                     "id" : "1",
                     "sender" : "David",
                     "sendTime" : "2022-08-31 10:00:00",
-                    "text" : "Hi my name is David"
+                    "text" : "Hi my name is David",
+                    "listName" : "Jordan2"
                 },
                 {
                     "id" : "2",
                     "sender" : "han",
                     "sendTime" : "2022-08-31 10:00:00",
-                    "text" : "I like jordan1"
+                    "text" : "I like jordan1",
+                    "listName" : "Jordan2"
                 }
             ]
         },
@@ -59,19 +65,22 @@
                     "id" : "0",
                     "sender" : "han",
                     "sendTime" : "2022-08-31 10:00:00",
-                    "text" : "Hi my name is Han"
+                    "text" : "Hi my name is Han",
+                    "listName" : "Jordan3"
                 },
                 {
                     "id" : "1",
                     "sender" : "David",
                     "sendTime" : "2022-08-31 10:00:00",
-                    "text" : "Hi my name is David"
+                    "text" : "Hi my name is David",
+                    "listName" : "Jordan3"
                 },
                 {
                     "id" : "2",
                     "sender" : "han",
                     "sendTime" : "2022-08-31 10:00:00",
-                    "text" : "I want to buy it!"
+                    "text" : "I want to buy it!",
+                    "listName" : "Jordan3"
                 }
             ]
         }
