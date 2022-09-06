@@ -1,18 +1,23 @@
 import React from 'react';
 import './FAQcontent.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faX} from '@fortawesome/free-solid-svg-icons'
+import {faPlus} from '@fortawesome/free-solid-svg-icons'
 const FAQcontent = (props) => {
     const showAnswer = (e) => {
         const answer = document.querySelectorAll('.answer');
+        const xBtn = document.querySelectorAll('.XBtn');
         const idx = e.target.id;
-        const targetClass = answer[idx].classList
-        if(targetClass.value === 'answer active') {
-            targetClass.remove('active');
-        } else {
-            targetClass.add('active');
-        }
+        setActive(answer, idx);
+        setActive(xBtn, idx);
     };
+
+    const setActive = (target, idx) => {
+        if(target[idx].classList.value.includes('active')) {
+            target[idx].classList.remove('active');
+        } else {
+            target[idx].classList.add('active');
+        }
+    }
 
     return(
     <div className="f_container">
@@ -23,7 +28,7 @@ const FAQcontent = (props) => {
                 채팅 내용을 개인 PC에 저장할 수 있나요?
                 </span>
                 <button className='XBtn' id='0' onClick={showAnswer}>
-                <FontAwesomeIcon className='icon' id='0' icon={faX}/>
+                <FontAwesomeIcon className='icon' id='0' icon={faPlus}/>
                 </button>
             </div>
             <div className="answer">
@@ -39,7 +44,7 @@ const FAQcontent = (props) => {
                 개인이 채팅방을 만들 수 있나요?
                 </span>
                 <button className='XBtn' id='1' onClick={showAnswer}>
-                <FontAwesomeIcon className='icon' id='1' icon={faX}/>
+                <FontAwesomeIcon className='icon' id='1' icon={faPlus}/>
                 </button>
             </div>
             <div className="answer">
@@ -55,7 +60,7 @@ const FAQcontent = (props) => {
                 불편한 점이 있는데 어디에 문의해야 하나요?
                 </span>
                 <button className='XBtn' id='2' onClick={showAnswer}>
-                <FontAwesomeIcon className='icon' id='2' icon={faX}/>
+                <FontAwesomeIcon className='icon' id='2' icon={faPlus}/>
                 </button>
             </div>
             <div className="answer">

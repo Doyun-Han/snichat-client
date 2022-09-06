@@ -28,7 +28,6 @@
 }
 
 .question {
-
     padding: 0 0.5rem;
     display: flex;
     justify-content: space-between;
@@ -36,8 +35,12 @@
 }
 
 .XBtn {
-    font-size: 0.8rem;
+    font-size: 1rem;
     z-index: 1;
+    transition: all 300ms ease-in-out;
+}
+.XBtn.active {
+    transform: rotate(45deg);
 }
 
 .answer {
