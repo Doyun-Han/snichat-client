@@ -5,8 +5,7 @@ import Message from '../message/message';
 import { createPopup } from '@picmo/popup-picker';
 import { createPicker } from 'picmo'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faPaperPlane} from '@fortawesome/free-solid-svg-icons';
-import {faFaceSmile} from '@fortawesome/free-solid-svg-icons';
+import {faPaperPlane, faFaceSmile} from '@fortawesome/free-solid-svg-icons';
 
 const Chatboard = ({chatData}) => {    
     const [active, setActive] = useState([]);
