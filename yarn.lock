@@ -1148,6 +1148,18 @@
     "minimatch" "^3.0.4"
     "strip-json-comments" "^3.1.1"
 
+"@floating-ui/core@^1.0.1":
+  "integrity" "sha512-bO37brCPfteXQfFY0DyNDGB3+IMe4j150KFQcgJ5aBP295p9nBGeHEs/p0czrRbtlHq4Px/yoPXO/+dOCcF4uA=="
+  "resolved" "https://registry.npmjs.org/@floating-ui/core/-/core-1.0.1.tgz"
+  "version" "1.0.1"
+
+"@floating-ui/dom@^1.0.0":
+  "integrity" "sha512-wBDiLUKWU8QNPNOTAFHiIAkBv1KlHauG2AhqjSeh2H+wR8PX+AArXfz8NkRexH5PgMJMmSOS70YS89AbWYh5dA=="
+  "resolved" "https://registry.npmjs.org/@floating-ui/dom/-/dom-1.0.1.tgz"
+  "version" "1.0.1"
+  dependencies:
+    "@floating-ui/core" "^1.0.1"
+
 "@fortawesome/fontawesome-common-types@6.1.2":
   "integrity" "sha512-wBaAPGz1Awxg05e0PBRkDRuTsy4B3dpBm+zreTTyd9TH4uUM27cAL4xWyWR0rLJCrRwzVsQ4hF3FvM6rqydKPA=="
   "resolved" "https://registry.npmjs.org/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-6.1.2.tgz"
@@ -1411,6 +1423,13 @@
   dependencies:
     "@nodelib/fs.scandir" "2.1.5"
     "fastq" "^1.6.0"
+
+"@picmo/popup-picker@^5.6.3":
+  "integrity" "sha512-sPani9/XQcQiyXTQblxT1nln1QgVOPrBrv3XqduCpcWppVz05CJYv9WsNjRR4qYS+4roJSVWLxpMk7oO9pn6Mg=="
+  "resolved" "https://registry.npmjs.org/@picmo/popup-picker/-/popup-picker-5.6.3.tgz"
+  "version" "5.6.3"
+  dependencies:
+    "@floating-ui/dom" "^1.0.0"
 
 "@pmmmwh/react-refresh-webpack-plugin@^0.5.3":
   "integrity" "sha512-zZbZeHQDnoTlt2AF+diQT0wsSXpvWiaIOZwBRdltNFhG1+I3ozyaw7U/nBiUwyJ0D+zwdXp0E3bWOl38Ag2BMw=="
@@ -3712,6 +3731,11 @@
   "integrity" "sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg=="
   "resolved" "https://registry.npmjs.org/emoji-regex/-/emoji-regex-9.2.2.tgz"
   "version" "9.2.2"
+
+"emojibase@^6.1.0":
+  "integrity" "sha512-1GkKJPXP6tVkYJHOBSJHoGOr/6uaDxZ9xJ6H7m6PfdGXTmQgbALHLWaVRY4Gi/qf5x/gT/NUXLPuSHYLqtLtrQ=="
+  "resolved" "https://registry.npmjs.org/emojibase/-/emojibase-6.1.0.tgz"
+  "version" "6.1.0"
 
 "emojis-list@^3.0.0":
   "integrity" "sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q=="
@@ -6418,6 +6442,13 @@
   "integrity" "sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns="
   "resolved" "https://registry.npmjs.org/performance-now/-/performance-now-2.1.0.tgz"
   "version" "2.1.0"
+
+"picmo@^5.6.0", "picmo@^5.6.3":
+  "integrity" "sha512-2UQjJKPUCuG066MAfKzs4mu+n72+FN6EVyKAtN9qPGqiXh5ILvrJI6BcAsky4qujAyuFQvsj43gIQLvCG2RASg=="
+  "resolved" "https://registry.npmjs.org/picmo/-/picmo-5.6.3.tgz"
+  "version" "5.6.3"
+  dependencies:
+    "emojibase" "^6.1.0"
 
 "picocolors@^0.2.1":
   "integrity" "sha512-cMlDqaLEqfSaW8Z7N5Jw+lyIW869EzT73/F5lhtY9cLGoVxSXznfgfXMO0Z5K0o0Q2TkTXq+0KFsdnSe3jDViA=="

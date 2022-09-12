@@ -122,3 +122,7 @@ img {
     gap: 0.5rem;
 }
 
+.pickerContainer {
+    position: absolute;
+    transform: translate(-10%, -110%);
+}

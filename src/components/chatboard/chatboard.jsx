@@ -1,18 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './chatboard.css'
+import List from '../chatlist/list';
+import Message from '../message/message';
+import { createPopup } from '@picmo/popup-picker';
+import { createPicker } from 'picmo'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faPaperPlane} from '@fortawesome/free-solid-svg-icons';
 import {faFaceSmile} from '@fortawesome/free-solid-svg-icons';
-import List from '../chatlist/list';
-import Message from '../message/message';
 
-const Chatboard = ({chatData}) => {
-    const openEmoji = () => {
-        const OS = window.navigator.platform;
-        if(OS === 'Win32') {
-            document.dispatchEvent(new KeyboardEvent('keypress', {keyCode : 91}))
-        }
-    }
+const Chatboard = ({chatData}) => {    
     const [active, setActive] = useState([]);
     const [messages, setMessage] = useState([{sender : "yo", text : "Select ChatList"}])
     const msgInputRef = useRef();
@@ -28,6 +24,23 @@ const Chatboard = ({chatData}) => {
               })
           }
         })
+    
+    const trigger = document.querySelector('.trigger');
+    const pickerContainer = document.querySelector('.pickerContainer')
+    const Emoji = () => {
+        console.log('hi')
+        const picker = createPicker({
+        rootElement: pickerContainer,
+          className : 'custompicker',
+          emojiSize : '1rem',
+          showRecents : false,
+          showPreview : false,
+        })
+
+        picker.addEventListener('emoji:select', event => {
+            console.log('Emoji selected:', event.emoji);
+          });
+    }
 
     const changeActive = (index) => {
         const newArray = Array(chatData.lists.length).fill(false);
@@ -89,8 +102,9 @@ const Chatboard = ({chatData}) => {
             </div>
             <div className="b_footer">
                 <div className="b_input">
-                    <div className="emoji">
-                        <button onClick={openEmoji}>
+                    <div className="emoji" >
+                        <button className='trigger' onClick={Emoji}>
+                            <div className="pickerContainer"></div>
                             <FontAwesomeIcon icon={faFaceSmile} />
                         </button>
                     </div>
