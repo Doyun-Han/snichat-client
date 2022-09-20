@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink }from'react-router-dom';
 import { useState } from 'react';
 import Popup from '../popup/popup';
-import PopupContent from '../popupContent/popupContent';
+import PopupContent from '../popup/popupContent/popupContent';
 const Navbar = (props) => {
     const activeStyle = {
         background : 'skyblue',
