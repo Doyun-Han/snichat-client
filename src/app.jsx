@@ -1,12 +1,13 @@
-import React from 'react';
+import {React, useEffect, useState} from 'react';
 import './app.css';
 import Chatboard from './components/chatboard/chatboard';
 import Navbar from './components/navbar/navbar';
-function App({chatData}) {
+function App({chatservice}) {
+
   return (
     <>
     <Navbar />
-    <Chatboard chatData={chatData}/>
+    <Chatboard chatservice={chatservice}/>
     </>
   );
 }

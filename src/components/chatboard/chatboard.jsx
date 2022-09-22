@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { memo, useEffect, useRef, useState } from 'react';
 import './chatboard.css'
 import List from '../chatlist/list';
 import Message from '../message/message';
@@ -7,11 +7,19 @@ import { createPicker } from 'picmo'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faPaperPlane, faFaceSmile} from '@fortawesome/free-solid-svg-icons';
 
-const Chatboard = ({chatData}) => {    
+const Chatboard = memo(({chatservice}) => {
+    const [chatData, setChatData] = useState([]);
     const [active, setActive] = useState([]);
-    const [messages, setMessage] = useState([{sender : "yo", text : "Select ChatList"}])
+    const [messages, setMessage] = useState([]);
     const msgInputRef = useRef();
     const msgList = useRef();
+
+    useEffect(() => {
+        chatservice
+          .getChatData()
+          .then((chats) => {setChatData(chats.lists)})
+          .catch(console.log);
+      }, [chatservice]);
 
     useEffect(() => {
         if (msgList.current) {
@@ -42,21 +50,24 @@ const Chatboard = ({chatData}) => {
     }
 
     const changeActive = (index) => {
-        const newArray = Array(chatData.lists.length).fill(false);
+        const newArray = Array(chatData.length).fill(false);
         newArray[index] = true;
-        setMessage(chatData.lists[index].listMsg);
+        setMessage(chatData[index].listMsg);
         setActive(newArray);
     }
 
     const sendMessage = () => {
         if(msgInputRef.current.value === null || msgInputRef.current.value === "") return
-
-        const idx = messages.length
-        const msg = [...messages];
-        const sendMsg = { id : idx, sender : "han", sendTime : timeformat(new Date()), text : msgInputRef.current.value }
-        msg.push(sendMsg);
-
+        const activeIdx = active.indexOf(true);
+        const idx = chatData[activeIdx].listMsg.length
+        console.log(activeIdx);
+        const sendMsg = { id : idx, sender : "han", sendTime : timeformat(new Date()), text : msgInputRef.current.value, listName : chatData[activeIdx].listName}
+        const msg = [...messages, sendMsg];
         setMessage(msg);
+        chatservice
+        .postMessage(sendMsg)
+        .then((chats) => {setChatData(chats.lists)})
+        .catch(console.log);
 
         msgInputRef.current.value = ''
         msgInputRef.current.focus();
@@ -84,7 +95,7 @@ const Chatboard = ({chatData}) => {
         <div className="b_left">
             <div className="b_list">
                     <ul className="chatRows" >
-                        {chatData.lists.map((li, index) => {
+                        {chatData.map((li, index) => {
                             return <List list={li} key={li.listName} active={active[index]} onClick={changeActive} index={index}/>
                         })}
                     </ul>
@@ -94,9 +105,11 @@ const Chatboard = ({chatData}) => {
         <div className="b_right">
             <div className="b_board">
                 <ul className='messages' ref={msgList}>
-                    {messages.map((msg) => {
+                    {
+                    messages.map((msg) => {
                         return <Message sender={msg.sender} text={msg.text} key={msg.id}/>
-                    })}
+                    })
+                    }
                 </ul>
             </div>
             <div className="b_footer">
@@ -121,6 +134,6 @@ const Chatboard = ({chatData}) => {
     </div>
     </>
     )
-    };
+    });
 
 export default Chatboard;
