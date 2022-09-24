@@ -20,7 +20,7 @@ ReactDOM.render(
       <Routes>
         <Route path='/' element={<App chatservice={chatservice}/>}/>
         //수정필요
-        <Route path='myChat' element={<Mychat chatData={chatData}/>}/>
+        <Route path='myChat' element={<Mychat ChatService={chatservice}/>}/>
         <Route path='faq' element={<FAQ />}/>
         <Route path='term' element={<Term />}/>
       </Routes>

@@ -21,11 +21,21 @@ export default class ChatService {
             headers : {'Content-Type' : 'application/json'},
             body : JSON.stringify(msg)
         })
-
         const data = await response.json();
         if(response.status !== 201) {
             throw new Error(data.message)
         }
         return data
+    }
+
+    async deleteMessgae(info) {
+        const response = await fetch(`${this.baseURL}?id=${info.id}&listname=${info.listname}`, {
+            method : 'DELETE',
+            headers : {'Content-Type' : 'application/json'}
+        });
+        const data = await response.json();
+        if(response.status !== 204) {
+            throw new Error(data.message)
+        }
     }
 }

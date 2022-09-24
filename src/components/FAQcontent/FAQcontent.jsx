@@ -6,7 +6,7 @@ const FAQcontent = (props) => {
     const showAnswer = (e) => {
         const answer = document.querySelectorAll('.answer');
         const xBtn = document.querySelectorAll('.XBtn');
-        const idx = e.target.id;
+        const idx = e.currentTarget.id;
         setActive(answer, idx);
         setActive(xBtn, idx);
     };

@@ -1,7 +1,10 @@
 import React from 'react';
 import './chatcard.css'
 import img from '../../imgs/jordan.JPG'
-const Chatcard = ({message}) => {
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faDeleteLeft} from '@fortawesome/free-solid-svg-icons';
+
+const Chatcard = ({message, deleteMsg}) => {
     return(
         <div className='c_container'>
             <ul className="cards">
@@ -17,6 +20,9 @@ const Chatcard = ({message}) => {
                             <span className="c_writer">{msg.sender}</span>
                         </div>
                         </div>
+                        <button data-id={msg.id} data-list-name={msg.listName} className="deleteBtn" onClick={deleteMsg}>
+                            <FontAwesomeIcon icon={faDeleteLeft}/>
+                        </button>
                         </li>
                     })
                 }
