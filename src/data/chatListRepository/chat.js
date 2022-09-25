@@ -1,41 +1,23 @@
 export default class ChatService {
-    constructor(baseURL) {
-        this.baseURL = baseURL;
+    constructor(http) {
+        this.http = http;
     } 
     async getChatData() {
-        const response = await fetch(`${this.baseURL}`,{
+        return this.http.fetch('/',{
             method : 'GET',
-            headers : {'Content-Type' : 'application/json'}
         })
-
-        const data = await response.json();
-        if(response.status !== 200) {
-            throw new Error(data.message)
-        }
-        return data
     }
 
     async postMessage(msg) {
-        const response = await fetch(`${this.baseURL}`,{
+        return this.http.fetch('/',{
             method : 'POST',
-            headers : {'Content-Type' : 'application/json'},
             body : JSON.stringify(msg)
         })
-        const data = await response.json();
-        if(response.status !== 201) {
-            throw new Error(data.message)
-        }
-        return data
     }
 
     async deleteMessgae(info) {
-        const response = await fetch(`${this.baseURL}?id=${info.id}&listname=${info.listname}`, {
+       return this.http.fetch(`?id=${info.id}&listname=${info.listname}`, {
             method : 'DELETE',
-            headers : {'Content-Type' : 'application/json'}
         });
-        const data = await response.json();
-        if(response.status !== 204) {
-            throw new Error(data.message)
-        }
     }
 }

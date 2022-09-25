@@ -7,11 +7,11 @@ import Mychat from './path/mychat/mychat';
 import FAQ from './path/FAQ/FAQ';
 import Term from './path/Term/Term';
 import ChatService from './data/chatListRepository/chat';
-import chatData from './data/chatListRepository/chatdata.json'
+import HttpClient from './network/http';
 
 const baseURL = process.env.REACT_APP_BASE_URL;
-console.log(baseURL)
-const chatservice = new ChatService(baseURL);
+const httpClient = new HttpClient(baseURL);
+const chatservice = new ChatService(httpClient);
 
 <script src="https://kit.fontawesome.com/3b0cac614e.js" crossorigin="anonymous"></script>
 ReactDOM.render(

@@ -2,7 +2,6 @@ import React, { memo, useEffect, useRef, useState } from 'react';
 import './chatboard.css'
 import List from '../chatlist/list';
 import Message from '../message/message';
-import { createPopup } from '@picmo/popup-picker';
 import { createPicker } from 'picmo'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faPaperPlane, faFaceSmile} from '@fortawesome/free-solid-svg-icons';
@@ -81,7 +80,7 @@ const Chatboard = memo(({chatservice}) => {
 
     const timeformat = (time) => {
         const year = time.getFullYear();
-        const month = time.getMonth();
+        const month = time.getMonth() + 1;
         const date = time.getDate();
         const hour = time.getHours();
         const minutes = time.getMinutes();
