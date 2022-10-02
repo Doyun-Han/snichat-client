@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './popupContent.css'
 import Signin from './signIn/signin';
 import SignUp from './signUp/signUp';
-
+import Banner from '../../banner/banner';
 
 const PopupContent = ({onClose, onSignUp, onLogin}) => {
     const [signPopUp, setsignPopUp]= useState(true);
@@ -25,7 +25,7 @@ const PopupContent = ({onClose, onSignUp, onLogin}) => {
         } else {
             await onLogin(email, password).catch(setError);
         }
-        onClose();
+        {!isAlert && onClose()};
     }
 
     const setError= (error) => {
@@ -53,6 +53,7 @@ const PopupContent = ({onClose, onSignUp, onLogin}) => {
                 <form className='auth-form' onSubmit={onSubmit}>
                     <div className="full_layer">
                         <div className="common_alert">
+                            <Banner text={text} isAlert={isAlert}/>
                             {signPopUp&&<Signin  openSignUp={openSignUp} onChange={onChange}/>}
                             {!signPopUp&&<SignUp  openSignUp={openSignUp} onChange={onChange}/>}
                         </div>

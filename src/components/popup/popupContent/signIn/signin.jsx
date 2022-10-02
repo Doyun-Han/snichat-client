@@ -20,7 +20,7 @@ const Signin = ({ openSignUp, onChange}) => {
                 <input onChange={onChange} name='email' type="text" className="email" placeholder='email'/>
             </div>
             <div className="inputWrapper">
-                <input onChange={onChange} name='password' type="text" className="pw" placeholder='password'/>
+                <input onChange={onChange} name='password' type="password" className="pw" placeholder='password'/>
             </div>
         </div>
 
