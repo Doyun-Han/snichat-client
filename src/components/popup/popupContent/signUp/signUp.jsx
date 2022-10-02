@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faPenToSquare, faUserPlus} from '@fortawesome/free-solid-svg-icons';
 import './signUp.css'
-const SignUp = ({onClose}) => {
+const SignUp = ({ onChange}) => {
     return(
     <>
     <div className="popUpHeader">
@@ -14,21 +14,21 @@ const SignUp = ({onClose}) => {
                 <span>회원가입</span>
             </div>
         </div>
-
+        
         <div className="popUpInput">
             <div className="inputWrapper">
-                <input type="text" className="username" placeholder='username'/>
+                <input onChange={onChange} name='username' type="text" className="username" placeholder='username'/>
             </div>
             <div className="inputWrapper">
-                <input type="text" className="email" placeholder='email'/>
+                <input onChange={onChange} name='email' type="text" className="email" placeholder='email'/>
             </div>
             <div className="inputWrapper">
-                <input type="text" className="pw" placeholder='password'/>
+                <input onChange={onChange} name='password' type="text" className="pw" placeholder='password'/>
             </div>
         </div>
 
         <div className="popUpFooter">
-            <button type="button" onClick={onClose} className="popUpBtn signUp">가입하기</button>
+            <button className="popUpBtn signUp" type='submit'>가입하기</button>
         </div>
         </>
     )

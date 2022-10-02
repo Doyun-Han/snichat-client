@@ -3,7 +3,8 @@ import './navbar.css'
 import { faShoePrints}from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink }from'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import AuthContext from '../../context/AuthContext';
 import Popup from '../popup/popup';
 import PopupContent from '../popup/popupContent/popupContent';
 const Navbar = (props) => {
@@ -12,7 +13,9 @@ const Navbar = (props) => {
         color : 'white',
         borderRadius : '4px'
     }
-
+    const context = useContext(AuthContext);
+    const onSignUp = context.signUp;
+    const onLogin = context.logIn;
     const [isOpenPopUp, setOpenPopUp] = useState(false)
 
     const openPopUp = () => {
@@ -50,7 +53,7 @@ const Navbar = (props) => {
                 </NavLink>
                 <li className="n_item" id='loginBtn'>
                     <span onClick={openPopUp} >Login</span>
-                   {isOpenPopUp && <Popup><PopupContent onClose={closePopUp}/></Popup>}
+                   {isOpenPopUp && <Popup><PopupContent onClose={closePopUp} onSignUp={onSignUp} onLogin={onLogin}/></Popup>}
                 </li>
                 <div className="popupArea"></div>
             </ul>
