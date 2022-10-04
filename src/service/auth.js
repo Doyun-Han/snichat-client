@@ -28,7 +28,7 @@ export default class AuthService{
 
     async me() {
         const token = this.tokenStorage.getToken();
-        return this.http.fetch('/auth/me', {
+        return this.http.fetch('/auth/', {
             method : 'GET',
             headers : { Authorization : `Bearer ${token}`}
         })
@@ -36,5 +36,9 @@ export default class AuthService{
 
     async logout() {
         this.tokenStorage.clearToken();
+    }
+
+    async normalUser() {
+        
     }
 }

@@ -15,7 +15,7 @@ const contextRef = createRef();
 
 export function AuthProvider({ authService, authErrorEventBus, children }) {
     const [user, setUser] = useState(undefined);
-  
+    const [auth, setAuth] = useState(false);
     useImperativeHandle(contextRef, () => (user ? user.token : undefined));
   
     useEffect(() => {
@@ -33,18 +33,19 @@ export function AuthProvider({ authService, authErrorEventBus, children }) {
       async (username, email, password) =>
         authService
           .signup(username, email, password)
-          .then((user) => setUser(user)),
+          .then((user) => setUser(user))
+          .then(() => {setAuth(true)}),
       [authService]
     );
   
     const logIn = useCallback(
       async (email, password) =>
-        authService.login(email, password).then((user) => setUser(user)),
+        authService.login(email, password).then((user) => setUser(user)).then(()=>{setAuth(true)}),
       [authService]
     );
   
     const logout = useCallback(
-      async () => authService.logout().then(() => setUser(undefined)),
+      async () => authService.logout().then(() => setUser(undefined)).then(()=>{setAuth(false)}),
       [authService]
     );
   
@@ -54,8 +55,9 @@ export function AuthProvider({ authService, authErrorEventBus, children }) {
         signUp,
         logIn,
         logout,
+        auth
       }),
-      [user, signUp, logIn, logout]
+      [user, signUp, logIn, logout, auth]
     );
   
     return (

@@ -1,12 +1,13 @@
 import React from 'react';
 import './navbar.css'
-import { faShoePrints}from '@fortawesome/free-solid-svg-icons'
+import { faL, faShoePrints}from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink }from'react-router-dom';
 import { useState, useContext, useCallback } from 'react';
 import AuthContext from '../../context/AuthContext';
 import Popup from '../popup/popup';
 import PopupContent from '../popup/popupContent/popupContent';
+import { useEffect } from 'react';
 const Navbar = (props) => {
     const activeStyle = {
         background : 'skyblue',
@@ -17,9 +18,11 @@ const Navbar = (props) => {
     const onSignUp = context.signUp;
     const onLogin = context.logIn;
     const onLogout = context.logout;
-    const auth = context.user;
+    const auth = context.auth;
     const [isOpenPopUp, setOpenPopUp] = useState(false)
-    console.log(isOpenPopUp);
+
+
+
     const openPopUp = useCallback(() => {
         console.log(isOpenPopUp);
         return setOpenPopUp(true)
