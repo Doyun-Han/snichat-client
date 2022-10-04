@@ -1,6 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 import './popupContent.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faXmark} from '@fortawesome/free-solid-svg-icons'
+
 import Signin from './signIn/signin';
 import SignUp from './signUp/signUp';
 import Banner from '../../banner/banner';
@@ -30,7 +33,7 @@ const PopupContent = ({onClose, onSignUp, onLogin}) => {
         }
     }
 
-    const setError= (error) => {
+    const setError = (error) => {
         setText(error.toString());
         setIsAlert(true);
     }
@@ -49,12 +52,14 @@ const PopupContent = ({onClose, onSignUp, onLogin}) => {
               return setEmail(value);
             default:
         }
-    } 
+    }
+
     return(
             <div className="dimmed_layer_wrapper">
                 <form className='auth-form' onSubmit={onSubmit}>
                     <div className="full_layer">
                         <div className="common_alert">
+                            <button className='closeBtn' onClick={onClose}><FontAwesomeIcon icon={faXmark}/></button>
                             <Banner text={text} isAlert={isAlert}/>
                             {signPopUp&&<Signin  openSignUp={openSignUp} onChange={onChange}/>}
                             {!signPopUp&&<SignUp  openSignUp={openSignUp} onChange={onChange}/>}
