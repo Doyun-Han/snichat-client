@@ -1,10 +1,12 @@
-import React, { memo, useEffect, useState } from 'react';
+import { React, memo, useEffect, useState, useContext } from 'react';
 import Chatcard from '../../components/chatcard/chatcard';
 import Navbar from '../../components/navbar/navbar';
+import AuthContext from '../../context/AuthContext';
 
 const Mychat = memo(({ChatService}) => {
-    const [message, setMessage] = useState([])
+    const [message, setMessage] = useState([{text : '메세지가 없습니다.'}])
     const [change, setchange] = useState(false);
+    const context = useContext(AuthContext)
     useEffect(() => {
         ChatService
           .getChatData()
@@ -19,7 +21,7 @@ const Mychat = memo(({ChatService}) => {
                 allMsg.push(msg)
             })
         })
-        const filteredMsg = allMsg.filter(msg => msg.sender === 'han');
+        const filteredMsg = allMsg.filter(msg => msg.sender === context.user.username);
         setMessage(filteredMsg);
     }
     //delete Loading

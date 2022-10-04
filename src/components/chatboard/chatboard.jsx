@@ -1,7 +1,8 @@
-import React, { memo, useEffect, useRef, useState } from 'react';
+import React, { memo, useEffect, useRef, useState, useContext } from 'react';
 import './chatboard.css'
 import List from '../chatlist/list';
 import Message from '../message/message';
+import AuthContext from '../../context/AuthContext';
 import { createPicker } from 'picmo'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faPaperPlane, faFaceSmile} from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +13,7 @@ const Chatboard = memo(({chatservice}) => {
     const [messages, setMessage] = useState([]);
     const msgInputRef = useRef();
     const msgList = useRef();
+    const context = useContext(AuthContext);
 
     useEffect(() => {
         chatservice
@@ -56,11 +58,15 @@ const Chatboard = memo(({chatservice}) => {
     }
 
     const sendMessage = () => {
-        if(msgInputRef.current.value === null || msgInputRef.current.value === "") return
+        if(msgInputRef.current.value === null || msgInputRef.current.value === "" ) return
+        if(byteCounter(msgInputRef.current.value) < 2) {
+            alert('2자 이상 입력해야 합니다.')
+            return
+        }
         const activeIdx = active.indexOf(true);
         const idx = chatData[activeIdx].listMsg.length
         console.log(activeIdx);
-        const sendMsg = { id : idx, sender : "han", sendTime : timeformat(new Date()), text : msgInputRef.current.value, listName : chatData[activeIdx].listName}
+        const sendMsg = { id : idx, sender : context.user.username, sendTime : timeformat(new Date()), text : msgInputRef.current.value, listName : chatData[activeIdx].listName}
         const msg = [...messages, sendMsg];
         setMessage(msg);
         chatservice
@@ -70,6 +76,22 @@ const Chatboard = memo(({chatservice}) => {
 
         msgInputRef.current.value = ''
         msgInputRef.current.focus();
+    }
+
+    const byteCounter = (text) => {
+        let byte = 0;
+        let idx = 0;
+        for(let i=0; i<text.length;i++) {
+            if (/[ㄱ-ㅎㅏ-ㅣ가-힣一-龥ぁ-ゔァ-ヴー々〆〤]/.test(text[i])) {
+                byte = byte+2
+            } else {
+                byte++
+              }
+            if(byte == 4999 || byte == 5000) {
+              idx = i
+            }
+        }
+        return byte
     }
 
     const onKeyPress = (e) => {
