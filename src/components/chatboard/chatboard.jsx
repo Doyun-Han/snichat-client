@@ -7,13 +7,14 @@ import { createPicker } from 'picmo'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faPaperPlane, faFaceSmile} from '@fortawesome/free-solid-svg-icons';
 
-const Chatboard = memo(({chatservice}) => {
+const Chatboard = ({chatservice}) => {
     const [chatData, setChatData] = useState([]);
     const [active, setActive] = useState([]);
     const [messages, setMessage] = useState([]);
     const msgInputRef = useRef();
     const msgList = useRef();
     const context = useContext(AuthContext);
+
 
     useEffect(() => {
         chatservice
@@ -128,7 +129,7 @@ const Chatboard = memo(({chatservice}) => {
                 <ul className='messages' ref={msgList}>
                     {
                     messages.map((msg) => {
-                        return <Message sender={msg.sender} text={msg.text} key={msg.id}/>
+                        return <Message sender={msg.sender} text={msg.text} key={msg.id} />
                     })
                     }
                 </ul>
@@ -155,6 +156,6 @@ const Chatboard = memo(({chatservice}) => {
     </div>
     </>
     )
-    });
+    };
 
 export default Chatboard;

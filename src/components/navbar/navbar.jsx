@@ -21,8 +21,6 @@ const Navbar = (props) => {
     const auth = context.auth;
     const [isOpenPopUp, setOpenPopUp] = useState(false)
 
-
-
     const openPopUp = useCallback(() => {
         console.log(isOpenPopUp);
         return setOpenPopUp(true)

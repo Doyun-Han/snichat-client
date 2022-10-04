@@ -45,7 +45,7 @@ export function AuthProvider({ authService, authErrorEventBus, children }) {
     );
   
     const logout = useCallback(
-      async () => authService.logout().then(() => setUser(undefined)).then(()=>{setAuth(false)}),
+      async () => authService.logout().then(() => setUser(undefined)).then(()=>{setAuth(false)}).then(()=>{window.location.reload()}),
       [authService]
     );
   

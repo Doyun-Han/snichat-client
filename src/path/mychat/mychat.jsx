@@ -6,7 +6,7 @@ import AuthContext from '../../context/AuthContext';
 const Mychat = memo(({ChatService}) => {
     const [message, setMessage] = useState([{text : '메세지가 없습니다.'}])
     const [change, setchange] = useState(false);
-    const context = useContext(AuthContext)
+    const context = useContext(AuthContext);
     useEffect(() => {
         ChatService
           .getChatData()
