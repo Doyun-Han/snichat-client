@@ -18,14 +18,16 @@ const PopupContent = ({onClose, onSignUp, onLogin}) => {
     }
 
     async function onSubmit(event) {
-        console.log(signPopUp);
         event.preventDefault();
         if (!signPopUp) {
-            await onSignUp(username, email, password).catch(setError);
+            await onSignUp(username, email, password)
+            .then(onClose)
+            .catch(setError);
         } else {
-            await onLogin(email, password).catch(setError);
+            await onLogin(email, password)
+                .then(onClose)
+            .catch(setError);
         }
-        {!isAlert && onClose()};
     }
 
     const setError= (error) => {

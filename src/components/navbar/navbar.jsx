@@ -3,7 +3,7 @@ import './navbar.css'
 import { faShoePrints}from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink }from'react-router-dom';
-import { useState, useContext } from 'react';
+import { useState, useContext, useCallback } from 'react';
 import AuthContext from '../../context/AuthContext';
 import Popup from '../popup/popup';
 import PopupContent from '../popup/popupContent/popupContent';
@@ -16,18 +16,19 @@ const Navbar = (props) => {
     const context = useContext(AuthContext);
     const onSignUp = context.signUp;
     const onLogin = context.logIn;
+    const onLogout = context.logout;
+    const auth = context.user;
     const [isOpenPopUp, setOpenPopUp] = useState(false)
-
-    const openPopUp = () => {
+    console.log(isOpenPopUp);
+    const openPopUp = useCallback(() => {
         console.log(isOpenPopUp);
         return setOpenPopUp(true)
-    }
+    })
 
-    const closePopUp = () => {
-        console.log('doing')
+    const closePopUp = useCallback(() => {
+        console.log(isOpenPopUp)
         return setOpenPopUp(false)
-    }
-
+    })
 
     return(
         <div className="n_wrap">
@@ -51,10 +52,17 @@ const Navbar = (props) => {
                 <NavLink to='/term' style={({ isActive }) => isActive ? activeStyle : undefined}>
                 <li className="n_item">Term of use</li>
                 </NavLink>
-                <li className="n_item" id='loginBtn'>
-                    <span onClick={openPopUp} >Login</span>
+                {
+                    !auth && <li className="n_item" id='loginBtn'>
+                    <span onClick={openPopUp}>login</span>
                    {isOpenPopUp && <Popup><PopupContent onClose={closePopUp} onSignUp={onSignUp} onLogin={onLogin}/></Popup>}
                 </li>
+                }
+                {
+                    auth && <li className="n_item" id='loginBtn'>
+                    <span onClick={onLogout}>logout</span>
+                </li>
+                }
                 <div className="popupArea"></div>
             </ul>
         </div>
