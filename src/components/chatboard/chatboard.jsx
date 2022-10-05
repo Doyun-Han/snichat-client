@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef, useState, useContext } from 'react';
+import React, { useEffect, useRef, useState, useContext } from 'react';
 import './chatboard.css'
 import List from '../chatlist/list';
 import Message from '../message/message';
@@ -11,6 +11,7 @@ const Chatboard = ({chatservice}) => {
     const [chatData, setChatData] = useState([]);
     const [active, setActive] = useState([]);
     const [messages, setMessage] = useState([]);
+    const [emoji, setemoji] = useState(false);
     const msgInputRef = useRef();
     const msgList = useRef();
     const context = useContext(AuthContext);
@@ -34,22 +35,26 @@ const Chatboard = ({chatservice}) => {
           }
         })
     
-    const trigger = document.querySelector('.trigger');
     const pickerContainer = document.querySelector('.pickerContainer')
     const Emoji = () => {
-        console.log('hi')
+        setemoji(!emoji);
+        const msgInput = document.querySelector('.msginput');
+
         const picker = createPicker({
         rootElement: pickerContainer,
           className : 'custompicker',
           emojiSize : '1rem',
           showRecents : false,
           showPreview : false,
+          showSearch : false,
+          onPositionLost : 'close'
         })
 
         picker.addEventListener('emoji:select', event => {
-            console.log('Emoji selected:', event.emoji);
+            msgInput.value = `${msgInput.value}${event.emoji}`
           });
     }
+
 
     const changeActive = (index) => {
         const newArray = Array(chatData.length).fill(false);
@@ -135,12 +140,12 @@ const Chatboard = ({chatservice}) => {
             <div className="b_footer">
                 <div className="b_input">
                     <div className="emoji" >
-                        <button className='trigger' onClick={Emoji}>
-                            <div className="pickerContainer"></div>
+                        <button onClick={Emoji} className={emoji ? 'emojiBtn active' : 'emojiBtn'}>
+                            <div className={emoji ? 'pickerContainer' : 'pickerContainer hide'}></div>
                             <FontAwesomeIcon icon={faFaceSmile} />
                         </button>
                     </div>
-                    <input onKeyPress={onKeyPress} ref={msgInputRef} type="text" placeholder='Type a message' />
+                    <input className='msginput' onKeyPress={onKeyPress} ref={msgInputRef} type="text" placeholder='Type a message' />
                 </div>
                 <div className="b_sendBtn">
                     <div className="btn_inner">

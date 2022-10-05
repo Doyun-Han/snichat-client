@@ -126,3 +126,12 @@ img {
     position: absolute;
     transform: translate(-10%, -110%);
 }
+.pickerContainer.hide {
+    display: none;
+}
+.emojiBtn {
+    color: grey;
+}
+.emojiBtn.active {
+    color: slateblue;
+}
