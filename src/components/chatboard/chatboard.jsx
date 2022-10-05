@@ -65,9 +65,7 @@ const Chatboard = ({chatservice}) => {
             return
         }
         const activeIdx = active.indexOf(true);
-        const idx = chatData[activeIdx].listMsg.length
-        console.log(activeIdx);
-        const sendMsg = { id : idx, sender : context.user.username, sendTime : timeformat(new Date()), text : msgInputRef.current.value, listName : chatData[activeIdx].listName}
+        const sendMsg = { id : new Date(), sender : context.user.username, sendTime : timeformat(new Date()), text : msgInputRef.current.value, listName : chatData[activeIdx].listName, userid : context.user.userid}
         const msg = [...messages, sendMsg];
         setMessage(msg);
         chatservice

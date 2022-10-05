@@ -10,7 +10,7 @@ const Chatcard = ({message, deleteMsg}) => {
             <ul className="cards">
                 {
                     message.map((msg) => {
-                    return <li className="card">
+                    return <li className="card" key={msg.id}>
                         <img src={img} alt="" />
                         <div className="c_contents">
                         <p className="roomName">{msg.listName}</p>
