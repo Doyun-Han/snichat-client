@@ -16,7 +16,7 @@ const Chatcard = ({message, deleteMsg}) => {
                         <p className="roomName">{msg.listName}</p>
                         <p className="msg">{msg.text}</p>
                         <div className="c_info">
-                            <span className="c_time">09:00</span>
+                            <span className="c_time">{msg.sendTime}</span>
                             <span className="c_writer">{msg.sender}</span>
                         </div>
                         </div>

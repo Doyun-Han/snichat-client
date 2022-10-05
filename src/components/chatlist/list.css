@@ -16,10 +16,6 @@
     transition: all 300ms ease-in-out;
 }
 
-.chatList.active > .li_description >.li_right > .msgCount {
-    display: none;
-}
-
 .chatList.active > .li_description >.li_right {
     justify-content: center;
 }
@@ -51,17 +47,4 @@
 .li_right p:nth-of-type(1) {
     font-size: 0.8rem;
     font-weight: bold;
-}
-
-.msgCount {
-    background-color: orange;
-    width: 20px;
-    height: 20px;
-    font-size: 0.75rem;
-    color: white;
-    font-weight: bold;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }

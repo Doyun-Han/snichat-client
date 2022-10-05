@@ -3,7 +3,7 @@ import './list.css'
 import img from '../../imgs/jordan.JPG'
 const List = ({list, active, onClick, index}) => {
     const lastIdx = list.listMsg.length - 1;
-    
+    const time = list.listMsg[lastIdx].sendTime.split(' ')[1].split(':')
     return(
         <li onClick={()=> onClick(index)} className={active ? "chatList active" : "chatList"}>
     <div className="li_img">
@@ -15,10 +15,7 @@ const List = ({list, active, onClick, index}) => {
             <p>{list.listMsg[lastIdx].text}</p>
         </div>
         <div className="li_right">
-            <p>09:00</p>
-            <div className="msgCount">
-            <p>3</p>
-            </div>
+            <p>{`${time[0]}:${time[1]}`}</p>
         </div>
     </div>
 </li>
