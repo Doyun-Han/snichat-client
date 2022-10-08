@@ -1,6 +1,8 @@
 import { React, useState, useEffect } from 'react';
 import './list.css'
+import ImgService from '../../service/img.js';
 const baseURL = process.env.REACT_APP_BASE_URL;
+const imgService = new ImgService(baseURL);
 
 const List = ({list, active, onClick, index}) => {
     const lastIdx = list.listMsg.length - 1;
@@ -8,10 +10,7 @@ const List = ({list, active, onClick, index}) => {
     const [image, setImage] = useState('')
 
     useEffect(() => {
-        fetch(`${baseURL}/img/${list.listName}`, {
-            method : 'GET',
-            headers :{ "Context-Type" : "image/jpg"}
-        }).then((res) => {setImage(res.url)})
+        imgService.getImage(list.listName).then((res) => {setImage(res.url)})
     },[])
     
     return(

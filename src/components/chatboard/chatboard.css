@@ -135,3 +135,32 @@ img {
 .emojiBtn.active {
     color: slateblue;
 }
+
+@media (max-width: 1024px) {
+    .b_wrap {
+        flex-direction: column;
+        height: 100%;
+    }
+    .b_left {
+        flex: 1;
+        padding: 1rem;
+        overflow-y:hidden
+    }
+    .b_list {
+        height: 6rem;
+    }
+    .chatRows {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .chatList {
+        flex: 1;
+    }
+    .b_right {
+        flex: 5;
+    }
+    .b_board {
+        position: relative;
+        height: 100%;
+    }
+}

@@ -1,7 +1,7 @@
 .message > .m_container :nth-child(2) {
     margin-top: 0.25rem;
     background-color: rgb(240, 240, 240);
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1rem;
     width: max-content;
     border-radius: 0 16px 16px 16px;
 }
@@ -19,4 +19,14 @@
     background-color: rgb(85, 26, 137);
     color: white;
     border-radius: 16px 0 16px 16px;
+}
+
+@media (max-width:1024px) {
+    .message > .m_container :nth-child(2) {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+    .m_sender > span {
+        font-size: 1rem;
+    }
 }

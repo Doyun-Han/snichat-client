@@ -65,7 +65,7 @@ const Chatboard = ({chatservice}) => {
 
     const sendMessage = () => {
         if(msgInputRef.current.value === null || msgInputRef.current.value === "" ) return
-        if(byteCounter(msgInputRef.current.value) < 2) {
+        if(byteCounter(msgInputRef.current.value) < 3) {
             alert('2자 이상 입력해야 합니다.')
             return
         }

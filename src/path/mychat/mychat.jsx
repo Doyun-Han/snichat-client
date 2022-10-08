@@ -2,9 +2,9 @@ import { React, memo, useEffect, useState, useContext } from 'react';
 import Chatcard from '../../components/chatcard/chatcard';
 import Navbar from '../../components/navbar/navbar';
 import AuthContext from '../../context/AuthContext';
-
+import './mychat.css'
 const Mychat = memo(({ChatService}) => {
-    const [message, setMessage] = useState([{text : '메세지가 없습니다.'}])
+    const [message, setMessage] = useState([])
     const [change, setchange] = useState(false);
     const context = useContext(AuthContext);
     useEffect(() => {
@@ -15,14 +15,16 @@ const Mychat = memo(({ChatService}) => {
       }, [ChatService]);
 
     const filterMsg = (chatData) => {
-        let allMsg = []
-        chatData.lists.map((list) => {
-            list.listMsg.map((msg) => {
-                allMsg.push(msg)
+
+            let allMsg = []
+            chatData.lists.map((list) => {
+                list.listMsg.map((msg) => {
+                    allMsg.push(msg)
+                })
             })
-        })
-        const filteredMsg = allMsg.filter(msg => msg.sender === context.user.username);
-        setMessage(filteredMsg);
+            const filteredMsg = allMsg.filter(msg => msg.sender === context.user.username);
+            setMessage(filteredMsg);
+        
     }
     //delete Loading
     const deleteMsg = (e) => {
@@ -38,11 +40,18 @@ const Mychat = memo(({ChatService}) => {
     return(
         <>
         <Navbar />
-        <Chatcard message={message} deleteMsg={deleteMsg}/>
+        <div className='c_container'>
+            <h2>My Chats</h2>
+            <ul className="cards">
+                {
+                    message.map((msg) => {
+                        return <Chatcard msg={msg} deleteMsg={deleteMsg} key={msg.id}/>
+                    })
+                }
+            </ul>
+        </div>
     </>
     )
     });
 
 export default Mychat;
-
-// => setMessage(message.filter((msg) => msg.id !== id || msg.listName !== listname))

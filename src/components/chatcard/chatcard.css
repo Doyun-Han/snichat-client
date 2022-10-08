@@ -1,15 +1,3 @@
-.c_container {
-    width: 60%;
-    max-height: 50vh;
-    margin: auto;
-    margin-top: 5rem;
-}
-
-.cards {
-    overflow-y: auto;
-    height: 55vh;
-}
-
 .card {
     position: relative;
     background-color: white;

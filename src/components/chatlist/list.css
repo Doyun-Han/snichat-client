@@ -48,3 +48,12 @@
     font-size: 0.8rem;
     font-weight: bold;
 }
+
+@media (max-width : 1024px) {
+    .li_left p:nth-of-type(2) {
+        display: none;
+    }
+    .li_right {
+        display: none;
+    }
+}
