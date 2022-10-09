@@ -22,6 +22,7 @@ const Chatboard = ({chatservice}) => {
           .getChatData()
           .then((chats) => {setChatData(chats.lists)})
           .catch(console.log);
+
       }, [chatservice]);
 
     useEffect(() => {
@@ -71,15 +72,17 @@ const Chatboard = ({chatservice}) => {
         }
         const activeIdx = active.indexOf(true);
         const sendMsg = { id : new Date(), sender : context.user.username, sendTime : timeformat(new Date()), text : msgInputRef.current.value, listName : chatData[activeIdx].listName, userid : context.user.userid}
-        const msg = [...messages, sendMsg];
-        setMessage(msg);
+        // const msg = [...messages, sendMsg];
+        // setMessage(msg);
         chatservice
         .postMessage(sendMsg)
         .then((chats) => {setChatData(chats.lists)})
         .catch(console.log);
-
         msgInputRef.current.value = ''
         msgInputRef.current.focus();
+
+        const stopSync = chatservice.onSync((data) => {setChatData(data.lists); setMessage(data.lists[activeIdx].listMsg)});
+        return () => stopSync
     }
 
     const byteCounter = (text) => {

@@ -31,6 +31,9 @@ export default class AuthService{
         return this.http.fetch('/auth/', {
             method : 'GET',
             headers : { Authorization : `Bearer ${token}`}
+        }).then((res) => {
+            this.tokenStorage.saveToken(res.token);
+            return res
         })
     }
 

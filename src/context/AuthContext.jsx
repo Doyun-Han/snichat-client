@@ -14,9 +14,9 @@ const AuthContext = createContext({});
 const contextRef = createRef();
 
 export function AuthProvider({ authService, authErrorEventBus, children }) {
-    const [user, setUser] = useState(undefined);
-    const [auth, setAuth] = useState(false);
-    useImperativeHandle(contextRef, () => (user ? user.token : undefined));
+  const [user, setUser] = useState(undefined);
+  const [auth, setAuth] = useState(false);
+  useImperativeHandle(contextRef, () => (user ? user.token : undefined));
   
     useEffect(() => {
       authErrorEventBus.listen((err) => {
@@ -26,7 +26,7 @@ export function AuthProvider({ authService, authErrorEventBus, children }) {
     }, [authErrorEventBus]);
   
     useEffect(() => {
-      authService.me().then(setUser).catch(console.error);
+      authService.me().then((data) => {setUser(data)}).catch(console.error);
     }, [authService]);
   
     const signUp = useCallback(

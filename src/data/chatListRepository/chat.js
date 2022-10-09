@@ -1,5 +1,6 @@
 export default class ChatService {
-    constructor(http, tokenStorage) {
+    constructor(http, tokenStorage, socket) {
+        this.socket = socket;
         this.http = http;
         this.tokenStorage = tokenStorage;
     } 
@@ -30,5 +31,9 @@ export default class ChatService {
         return {
             Authorization : `Bearer ${token}`
         }
+    }
+
+    onSync(callback) {
+        return this.socket.onSync('message', callback)
     }
 }

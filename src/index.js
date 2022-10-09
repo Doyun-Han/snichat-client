@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './app';
+import socket from 'socket.io-client';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Mychat from './path/mychat/mychat';
 import FAQ from './path/FAQ/FAQ';
@@ -11,15 +12,18 @@ import HttpClient from './network/http';
 import TokenStorage from './data/token';
 import AuthService from './service/auth';
 import { AuthProvider, AuthErrorEventBus } from './context/AuthContext';
+import Socket from './network/socket.js'
 
 const baseURL = process.env.REACT_APP_BASE_URL;
 const tokenStorage = new TokenStorage();
 const authErrorEventBus = new AuthErrorEventBus();
 const httpClient = new HttpClient(baseURL);
-const chatservice = new ChatService(httpClient, tokenStorage);
+const socketClient = new Socket(baseURL, ()=> tokenStorage.getToken());
+const chatservice = new ChatService(httpClient, tokenStorage, socketClient);
 const authService = new AuthService(httpClient, tokenStorage);
 
 <script src="https://kit.fontawesome.com/3b0cac614e.js" crossorigin="anonymous"></script>
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
