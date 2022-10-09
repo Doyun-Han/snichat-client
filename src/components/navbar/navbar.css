@@ -18,9 +18,9 @@ a:active, a:visited {
     gap: 0.5rem;
     font-weight: bold;
 }
-
 .logo_wrap{
-    transform: rotate(-40deg)}
+    transform: rotate(-40deg)
+}
 
 .n_itemRow {
     margin: 0;
@@ -39,3 +39,46 @@ a:active, a:visited {
     cursor: pointer;
 }
 
+.n_hamburgerBtn {
+    display: none;
+    position: absolute;
+    left: 85%;
+    top : 2rem;
+    font-size: 1rem;
+}
+
+@media screen and (max-width:1024px) {
+    .n_hamburgerBtn {
+        display: block;
+    }
+    .n_wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .n_items {
+        width: 100%;
+        display: none;
+    }
+    .n_items.active {
+        display: block;
+    }
+    .n_itemRow {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+    .n_logo {
+        align-items: flex-start;
+    }
+    .n_item {
+        background-color: skyblue;
+    }
+    .n_item:hover {
+        background-color: white;
+        color: black;
+        border-radius: 4px;
+        padding: 4px;
+    }
+
+}

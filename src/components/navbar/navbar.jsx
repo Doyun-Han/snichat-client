@@ -1,6 +1,6 @@
 import React from 'react';
 import './navbar.css'
-import { faL, faShoePrints}from '@fortawesome/free-solid-svg-icons'
+import {  faBars,faShoePrints}from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink }from'react-router-dom';
 import { useState, useContext, useCallback } from 'react';
@@ -19,7 +19,8 @@ const Navbar = (props) => {
     const onLogin = context.logIn;
     const onLogout = context.logout;
     const auth = context.auth;
-    const [isOpenPopUp, setOpenPopUp] = useState(false)
+    const [isOpenPopUp, setOpenPopUp] = useState(false);
+    const [toggleBtn, settoggleBtn] = useState(false);
 
     const openPopUp = useCallback(() => {
         console.log(isOpenPopUp);
@@ -31,15 +32,21 @@ const Navbar = (props) => {
         return setOpenPopUp(false)
     })
 
+    const togleSet = useCallback(()=> {
+        return settoggleBtn(!toggleBtn);
+    })
+
     return(
         <div className="n_wrap">
-        <div className="n_logo">
-            <div className="logo_wrap">
-            <FontAwesomeIcon icon={faShoePrints}/>
-            </div>
-            <span>SniChat</span>
-        </div>
-        <div className="n_items">
+            <NavLink to='/'>
+                <div className="n_logo">
+                    <div className="logo_wrap">
+                        <FontAwesomeIcon icon={faShoePrints}/>
+                    </div>
+                    <p>SniChat</p>
+                </div>
+            </NavLink>
+        <div className={toggleBtn ? 'n_items active' : 'n_items'} >
             <ul className="n_itemRow">
                 <NavLink to= '/'  style={({ isActive }) => isActive ? activeStyle : undefined}>
                 <li className="n_item">Home</li>
@@ -67,6 +74,9 @@ const Navbar = (props) => {
                 <div className="popupArea"></div>
             </ul>
         </div>
+        <button className='n_hamburgerBtn' onClick={togleSet}>
+                <FontAwesomeIcon icon={faBars}/>
+        </button>
     </div>
     )
 };

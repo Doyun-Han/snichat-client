@@ -105,7 +105,7 @@ input {
     margin: auto;
 }
 .popUpFooter > p {
-    font-size: calc(0.8vw);
+    font-size: calc(0.5vw);
 }
 .popUpFooter p:hover {
     cursor: pointer;
@@ -125,4 +125,16 @@ input {
     position: absolute;
     font-size: 1rem;
     left: 90%
+}
+
+@media screen and (max-width : 1024px) {
+    .common_alert{
+        padding: 0.2rem;
+        width: 60%;
+        height: 60vh;
+    }
+    .closeBtn {
+        left: 85%;
+        top: 5%;
+    }
 }

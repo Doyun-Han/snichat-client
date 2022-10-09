@@ -25,4 +25,7 @@ code {
     height: 100vh;
     padding : 0;
   }
+  body {
+    width: 100%;
+  }
 }

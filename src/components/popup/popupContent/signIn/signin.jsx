@@ -26,7 +26,6 @@ const Signin = ({ openSignUp, onChange}) => {
 
         <div className="popUpFooter">
             <p onClick={openSignUp}>회원가입</p>
-            <p>아이디 / 비밀번호 찾기</p>
             <button type='submit' className="popUpBtn login">로그인</button>
         </div>
         </>
