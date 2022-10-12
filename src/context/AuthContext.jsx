@@ -26,7 +26,16 @@ export function AuthProvider({ authService, authErrorEventBus, children }) {
     }, [authErrorEventBus]);
   
     useEffect(() => {
-      authService.me().then((data) => {setUser(data)}).catch(console.error);
+        authService.me()
+        .then(setUser)
+        .then(() => {setAuth(true)})
+        .catch((err) => {
+          if(err) {
+            authService.guestUser()
+            .then((data) => {setUser(data)})
+            .then(()=> {setAuth(false)})
+          }
+        })
     }, [authService]);
   
     const signUp = useCallback(

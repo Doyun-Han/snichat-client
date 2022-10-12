@@ -7,7 +7,6 @@ import { useState, useContext, useCallback } from 'react';
 import AuthContext from '../../context/AuthContext';
 import Popup from '../popup/popup';
 import PopupContent from '../popup/popupContent/popupContent';
-import { useEffect } from 'react';
 const Navbar = (props) => {
     const activeStyle = {
         background : 'skyblue',
@@ -28,7 +27,7 @@ const Navbar = (props) => {
     })
 
     const closePopUp = useCallback(() => {
-        console.log(isOpenPopUp)
+        settoggleBtn(false);
         return setOpenPopUp(false)
     })
 

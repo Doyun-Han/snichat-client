@@ -28,17 +28,22 @@ export default class AuthService{
 
     async me() {
         const token = this.tokenStorage.getToken();
-        return this.http.fetch('/auth/', {
+        return await this.http.fetch('/auth/me', {
             method : 'GET',
             headers : { Authorization : `Bearer ${token}`}
-        }).then((res) => {
-            this.tokenStorage.saveToken(res.token);
-            return res
         })
+    }
+
+    async guestUser() {
+        const data =  await this.http.fetch('/auth/', {
+            method : 'GET'
+        })
+        this.tokenStorage.saveToken(data.token);
+        return data;
     }
 
     async logout() {
         this.tokenStorage.clearToken();
-        await this.me();
+        await this.guestUser();
     }
 }
