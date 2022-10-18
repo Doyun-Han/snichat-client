@@ -127,6 +127,10 @@ input {
     left: 90%
 }
 
+.banner {
+    position: absolute;
+}
+
 @media screen and (max-width : 1024px) {
     .common_alert{
         padding: 0.2rem;

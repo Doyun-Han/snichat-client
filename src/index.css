@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
 }
+a:link {
+  color: none;
+}
 body {
   width: 90vw;
   margin: auto;

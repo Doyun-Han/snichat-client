@@ -15,9 +15,8 @@ const Mychat = memo(({ChatService}) => {
       }, [ChatService]);
 
     const filterMsg = (chatData) => {
-
             let allMsg = []
-            chatData.lists.map((list) => {
+            chatData.map((list) => {
                 list.listMsg.map((msg) => {
                     allMsg.push(msg)
                 })

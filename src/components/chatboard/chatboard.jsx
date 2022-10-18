@@ -20,9 +20,8 @@ const Chatboard = ({chatservice}) => {
     useEffect(() => {
         chatservice
           .getChatData()
-          .then((chats) => {setChatData(chats.lists)})
+          .then(setChatData)
           .catch(console.log);
-
       }, [chatservice]);
 
     useEffect(() => {
@@ -71,32 +70,28 @@ const Chatboard = ({chatservice}) => {
             return
         }
         const activeIdx = active.indexOf(true);
-        const sendMsg = { id : new Date(), sender : context.user.username, sendTime : timeformat(new Date()), text : msgInputRef.current.value, listName : chatData[activeIdx].listName, userid : context.user.userid}
+        const activeListname = chatData[activeIdx].listName;
+        const sendMsg = { id : new Date(), sender : context.user.username, sendTime : timeformat(new Date()), text : msgInputRef.current.value, listName : activeListname, userid : context.user.userid}
         // const msg = [...messages, sendMsg];
-        // setMessage(msg);
         chatservice
-        .postMessage(sendMsg)
-        .then((chats) => {setChatData(chats.lists)})
+        .postMessage(sendMsg, activeListname)
+        .then((chats) => {setChatData(chats)})
         .catch(console.log);
         msgInputRef.current.value = ''
         msgInputRef.current.focus();
-
-        const stopSync = chatservice.onSync((data) => {setChatData(data.lists); setMessage(data.lists[activeIdx].listMsg)});
+        
+        const stopSync = chatservice.onSync((data) => {setChatData(data); setMessage(data[activeIdx].listMsg)});
         return () => stopSync
     }
 
     const byteCounter = (text) => {
         let byte = 0;
-        let idx = 0;
         for(let i=0; i<text.length;i++) {
             if (/[ㄱ-ㅎㅏ-ㅣ가-힣一-龥ぁ-ゔァ-ヴー々〆〤]/.test(text[i])) {
                 byte = byte+2
             } else {
                 byte++
               }
-            if(byte == 4999 || byte == 5000) {
-              idx = i
-            }
         }
         return byte
     }

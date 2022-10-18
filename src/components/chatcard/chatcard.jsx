@@ -9,7 +9,7 @@ const imgService = new ImgService(baseURL);
 const Chatcard = ({msg, deleteMsg}) => {
     const [image, setImage] = useState('')
     useEffect(() => {
-        imgService.getImage(msg.listName).then((res) => setImage(res.url))
+        imgService.getImage(msg.listName).then(setImage)
     },[])
     
     return(

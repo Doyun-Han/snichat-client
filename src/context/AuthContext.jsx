@@ -26,6 +26,9 @@ export function AuthProvider({ authService, authErrorEventBus, children }) {
     }, [authErrorEventBus]);
   
     useEffect(() => {
+      // authService.guestUser()
+      //       .then((data) => {setUser(data)})
+      //       .then(()=> {setAuth(false)})
         authService.me()
         .then(setUser)
         .then(() => {setAuth(true)})

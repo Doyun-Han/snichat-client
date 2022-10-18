@@ -36,6 +36,9 @@ const PopupContent = ({onClose, onSignUp, onLogin}) => {
     const setError = (error) => {
         setText(error.toString());
         setIsAlert(true);
+        setTimeout(() => {
+            setText('')
+        },3000);
     }
 
     const onChange = (event) => {
@@ -60,7 +63,7 @@ const PopupContent = ({onClose, onSignUp, onLogin}) => {
                     <div className="full_layer">
                         <div className="common_alert">
                             <button className='closeBtn' onClick={onClose}><FontAwesomeIcon icon={faXmark}/></button>
-                            <Banner text={text} isAlert={isAlert}/>
+                            <Banner className='banner' text={text} isAlert={isAlert}/>
                             {signPopUp&&<Signin  openSignUp={openSignUp} onChange={onChange}/>}
                             {!signPopUp&&<SignUp  openSignUp={openSignUp} onChange={onChange}/>}
                         </div>

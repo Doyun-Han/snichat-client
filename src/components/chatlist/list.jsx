@@ -10,7 +10,7 @@ const List = ({list, active, onClick, index}) => {
     const [image, setImage] = useState('')
 
     useEffect(() => {
-        imgService.getImage(list.listName).then((res) => {setImage(res.url)})
+        imgService.getImage(list.listName).then(setImage)
     },[])
     
     return(

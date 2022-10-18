@@ -11,10 +11,11 @@ export default class ChatService {
         })
     }
 
-    async postMessage(msg) {
+    async postMessage(msg, activeListname) {
+        const message = {msg,activeListname }
         return this.http.fetch('/chat-lists',{
             method : 'POST',
-            body : JSON.stringify(msg),
+            body : JSON.stringify(message),
             headers : this.getHeaders()
         })
     }
