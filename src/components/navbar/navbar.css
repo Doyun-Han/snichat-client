@@ -81,4 +81,7 @@ a:active, a:visited {
         padding: 4px;
     }
 
+    .n_hamburgerBtn {
+        top: 1.5rem;
+    }
 }
